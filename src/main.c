@@ -111,7 +111,7 @@ void close_client(Client *clients, int list_index, fd_set *master_read_set, fd_s
 }
 
 // Create and configure server socket
-int create_server_socket(int port) {
+int create_server_hello_socket(int port) {
     int server_fd;
     struct sockaddr_in server_addr;
 
@@ -346,7 +346,7 @@ int run_server_with_select(int server_fd) {
 }
 
 int main(void) {
-    int server_fd = create_server_socket(PORT);
+    int server_fd = create_server_hello_socket(PORT);
     int result = run_server_with_select(server_fd);
     close(server_fd);
     return result;
